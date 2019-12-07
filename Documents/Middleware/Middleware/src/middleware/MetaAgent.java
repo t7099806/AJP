@@ -11,27 +11,30 @@ package middleware;
  */
 public class MetaAgent extends ArrayListBlockingQueue {
     String name;
-    Portal portal;
+//    Portal portal;
+
+   
     
-    MetaAgent(Portal portal)
-    {
-        super();
-        this.portal = portal;
-    }
     
+//    MetaAgent(Portal portal)
+//    {
+//        super();
+////        this.portal = portal;
+//    }
+//    
     public void messageHandler(Message msg)
     {
         
     }
     
-    public void sendMessage(Message msg, String name)
+    public void sendMessage(Message msg, String name) throws InterruptedException
     {
-        
+        enqueue(msg);
     }
     
-    public void messageRecieved(Message msg)
+    public void messageRecieved(Message msg) throws InterruptedException
     {
-        
+        dequeue();
     }
     
     public void setName(String name)
@@ -41,6 +44,11 @@ public class MetaAgent extends ArrayListBlockingQueue {
              this.name = name;
         }
     }
+    
+//    public void setPortal(Portal portal)
+//    {
+//        this.portal = portal;
+//    }
     
     public String getName()
     {

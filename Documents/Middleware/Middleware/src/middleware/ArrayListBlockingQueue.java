@@ -13,19 +13,21 @@ import java.util.concurrent.LinkedBlockingQueue;
  */
 public class ArrayListBlockingQueue extends LinkedBlockingQueue<Message> {
     
+    LinkedBlockingQueue<Message> queue;
+    
     public ArrayListBlockingQueue()
     {
-        
+        queue = new LinkedBlockingQueue();
     }
     
-    public void enqueue(Message msg)
+    public void enqueue(Message msg) throws InterruptedException
     {
-        
+        queue.put(msg);
     }
     
-    public void dequeue()
+    public void dequeue() throws InterruptedException
     {
-        
+        queue.take();
     }
     
 }

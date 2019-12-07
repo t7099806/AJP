@@ -11,8 +11,8 @@ package middleware;
  */
 public class UserMessage extends Message{
     
-    public UserMessage(String rawMessage, int id, String sender, String recipient, int idAutoIncrement) {
-        super(rawMessage, id, sender, recipient, idAutoIncrement);
+    public UserMessage(String rawMessage, int id, String sender, String recipient) {
+        super(rawMessage, id, sender, recipient);
     }
     
     public String wrap()

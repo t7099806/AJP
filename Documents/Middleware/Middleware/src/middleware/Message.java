@@ -15,19 +15,19 @@ public class Message {
     int id;
     String sender;
     String recipient;
-    static int idAutoIncrement;
+    static int idAutoIncrement = 0;
     
-    public Message(String rawMessage, int id, String sender, String recipient, int idAutoIncrement)
+     Message(String rawMessage, int id, String sender, String recipient)
     {
         this.rawMessage = rawMessage;
         this.id = id;
         this.sender = sender;
         this.recipient = recipient;
-        this.idAutoIncrement = idAutoIncrement;
     }
     
     public String wrap()
     {
+        idIncrement();
         return("Message id: " + id + "\n"
                 +"To: " + recipient + "\n"
                 +"From: " + sender + "\n"

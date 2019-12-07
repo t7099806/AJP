@@ -11,8 +11,8 @@ package middleware;
  */
 public class SystemMessage extends Message{
     
-    public SystemMessage(String rawMessage, int id, String sender, String recipient, int idAutoIncrement) {
-        super(rawMessage, id, sender, recipient, idAutoIncrement);
+    public SystemMessage(String rawMessage, int id, String sender, String recipient) {
+        super(rawMessage, id, sender, recipient);
     }
     
     public String wrap()

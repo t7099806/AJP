@@ -10,10 +10,12 @@ package middleware;
  * @author 44789
  */
 public class UserAgent extends MetaAgent {
+
+//    public UserAgent(Portal portal) {
+//        super(portal);
+//    }
     
-    public UserAgent(Portal portal) {
-        super(portal);
-    }
+ 
     
     public String getSender(Message msg)
     {
