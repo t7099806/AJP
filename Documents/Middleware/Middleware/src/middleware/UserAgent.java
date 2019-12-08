@@ -15,26 +15,27 @@ public class UserAgent extends MetaAgent {
 //        super(portal);
 //    }
     
- 
+    
     
     public String getSender(Message msg)
     {
-        return null;
+        return msg.sender;
     }
     
     public String getRecipient(Message msg)
     {
-        return null;
+        return msg.recipient;
     }
     
-    public String getRawMessage(Message msg)
+    public String getRawMessage(Message msg) throws InterruptedException
     {
-        return null;
+        msg = queue.take();
+        return msg.wrap();
     }
     
-    public String getMessageId(Message msg)
+    public int getMessageId(Message msg)
     {
-        return null;
+        return msg.id;
     }
     
     

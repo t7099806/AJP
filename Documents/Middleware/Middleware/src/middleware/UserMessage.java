@@ -17,7 +17,11 @@ public class UserMessage extends Message{
     
     public String wrap()
     {
-        return null;
+        idIncrement();
+        return("Message id: " + id + "\n"
+                +"To: " + recipient + "\n"
+                +"From: " + sender + "\n"
+                +"Message: " + rawMessage);
     }
     
 }

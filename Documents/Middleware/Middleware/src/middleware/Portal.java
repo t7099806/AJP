@@ -13,12 +13,10 @@ import java.util.HashMap;
  */
 public class Portal extends MetaAgent{
     
-    HashMap<String, MetaAgent> map = new HashMap(); 
-
-    
+    HashMap<String, UserAgent> map = new HashMap(); 
 
 
-    public void addAgent(String name, MetaAgent agent)
+    public void addAgent(String name, UserAgent agent)
     {
         map.put(name, agent);
     }
