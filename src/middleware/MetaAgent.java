@@ -30,7 +30,7 @@ public class MetaAgent extends ArrayListBlockingQueue {
         enqueue(msg);
     }
     
-    public void messageRecieved(Message msg) throws InterruptedException
+    public void messageReceived(Message msg) throws InterruptedException
     {
         dequeue();
     }

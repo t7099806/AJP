@@ -25,9 +25,9 @@ public class ArrayListBlockingQueue extends LinkedBlockingQueue<Message> {
         queue.put(msg);
     }
     
-    public void dequeue() throws InterruptedException
+    public Message dequeue() throws InterruptedException
     {
-        queue.take();
+        return queue.take();
     }
     
 }

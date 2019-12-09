@@ -40,9 +40,6 @@ public class main {
         portal.addAgent("I", agentI);
         portal.addAgent("A", agentA);
 
-        String rawMessageA = "Hello";
-        String senderA = "John";
-        String recipientA = "jim";
         
         UserMessage msg = new UserMessage("Hello", agentA, agentI);
         

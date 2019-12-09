@@ -11,7 +11,8 @@ package middleware;
  */
 public class UserMessage extends Message{
     
-    public UserMessage(String rawMessage, MetaAgent sender, MetaAgent recipient) {
+    public UserMessage(String rawMessage, MetaAgent sender, MetaAgent recipient) 
+    {
         super(rawMessage, sender, recipient);
     }
     

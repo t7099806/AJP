@@ -13,7 +13,7 @@ import java.util.HashMap;
  */
 public class Portal extends MetaAgent{
     
-    HashMap<String, UserAgent> map = new HashMap(); 
+    HashMap<String, MetaAgent> map = new HashMap(); 
 
     public Portal(String id) 
     {
@@ -21,7 +21,7 @@ public class Portal extends MetaAgent{
     }
 
 
-    public void addAgent(String name, UserAgent agent)
+    public void addAgent(String name, MetaAgent agent)
     {
         map.put(name, agent);
     }
@@ -33,12 +33,20 @@ public class Portal extends MetaAgent{
     
     public void messageReceived(Message msg) throws InterruptedException
     {
-        MetaAgent s = msg.recipient;
-        sendMessage(s, msg);
+        addAgent(msg.sender.getName(), msg.sender);
+        msg.recipient.enqueue(msg);
+        //map.get(msg.recipient.getName()).enqueue(msg);  
     }
     
     public void sendMessage(MetaAgent recipient, Message msg) throws InterruptedException
     {
-        recipient.messageRecieved(msg);
+        recipient.messageReceived(msg);
+    }
+    
+    @Override
+    public void enqueue(Message msg) throws InterruptedException
+    {   
+        queue.put(msg);
+        messageReceived(msg);
     }
 }

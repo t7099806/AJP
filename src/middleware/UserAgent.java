@@ -44,12 +44,19 @@ public class UserAgent extends MetaAgent
     @Override
     public void sendMessage(Message msg, String name) throws InterruptedException
     {
-        portal.messageReceived(msg);
+        portal.enqueue(msg);
     }
     
-    public void messageRecieved(Message msg) throws InterruptedException
+    @Override
+    public void messageReceived(Message msg) throws InterruptedException
     {
-        System.out.println("is this working????");
+        System.out.println("Agent " + this.getName() + " says " + dequeue().rawMessage);
     }
     
+    @Override
+    public void enqueue(Message msg) throws InterruptedException
+    {
+        queue.put(msg);
+        messageReceived(msg);
+    }
 }
