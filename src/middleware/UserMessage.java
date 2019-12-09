@@ -19,7 +19,7 @@ public class UserMessage extends Message{
     @Override
     public String wrap()
     {
-        return("Message id: " + id + "\n"
+        return("Message ID: " + id + "\n"
                 +"To: " + recipient.getName() + "\n"
                 +"From: " + sender.getName() + "\n"
                 +"Message: " + rawMessage);

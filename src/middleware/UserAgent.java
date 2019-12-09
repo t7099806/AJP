@@ -50,7 +50,7 @@ public class UserAgent extends MetaAgent
     @Override
     public void messageReceived(Message msg) throws InterruptedException
     {
-        System.out.println("Agent " + this.getName() + " says " + dequeue().rawMessage);
+        System.out.println(msg.wrap());
     }
     
     @Override

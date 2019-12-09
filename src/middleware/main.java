@@ -14,36 +14,19 @@ import java.util.HashMap;
 public class main {
     
     public static void main(String args[]) throws InterruptedException{
-        
-//                
-//        //Creating the agent 
-//        MetaAgent agent = new MetaAgent();
-//        String name = "jack";
-//        agent.setName(name);
-//        
-//        //Creating the second agent
-//        MetaAgent agent2 = new MetaAgent();
-//        String name2 = "John";
-//        agent.setName(name2);
-//        
- 
-//        //creating the portal
-//        Portal portal = new Portal();
-//        //adding the agent to the portal
-//        portal.addAgent(name, agent);
-//        portal.addAgent(name2, agent2);
-//        
+          
         Portal portal = new Portal("PortalA");
         UserAgent agentI = new UserAgent("I", portal);
         UserAgent agentA = new UserAgent("A", portal);
+        UserAgent agentB = new UserAgent("B", portal);
         
-        portal.addAgent("I", agentI);
-        portal.addAgent("A", agentA);
-
+        UserMessage msg = new UserMessage("Hello", agentA, agentB);
         
-        UserMessage msg = new UserMessage("Hello", agentA, agentI);
+        agentA.sendMessage(msg, "B");
         
-        agentA.sendMessage(msg, "I");
-        
+        for (MetaAgent ma : portal.map.values())
+        {
+            System.out.println(ma.name);
+        }
     }
 }

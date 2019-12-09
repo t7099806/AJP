@@ -34,6 +34,7 @@ public class Portal extends MetaAgent{
     public void messageReceived(Message msg) throws InterruptedException
     {
         addAgent(msg.sender.getName(), msg.sender);
+        addAgent(msg.recipient.getName(), msg.recipient);
         msg.recipient.enqueue(msg);
         //map.get(msg.recipient.getName()).enqueue(msg);  
     }
