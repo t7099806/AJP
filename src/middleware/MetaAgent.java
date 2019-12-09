@@ -5,57 +5,82 @@
  */
 package middleware;
 
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
- * @author 44789
+ * @author James Fairbairn
  */
-public class MetaAgent extends ArrayListBlockingQueue {
-    String name;
+public abstract class MetaAgent extends ArrayBlockingQueue<Message> 
+        implements Runnable 
+{
 
-   MetaAgent(String id)
-   {
-       super();
-       name = id;
-   }
-    
-    
+    private final String name;
+    private Thread thread;
+    private volatile boolean run;
+    Portal portal;
 
-    public void messageHandler(Message msg)
+    public MetaAgent(String name, int capacity) 
     {
+        super(capacity);
         
+        this.name = name;
+        this.run = true;
+        
+        start();
     }
     
-    public void sendMessage(Message msg, String name) throws InterruptedException
+    private void start()
     {
-        enqueue(msg);
+        thread = new Thread(this);
+        thread.start();
     }
     
-    public void messageReceived(Message msg) throws InterruptedException
+    public final void stop()
     {
-        dequeue();
-    }
-    
-    public void setName(String name)
-    {
-        if(isValidName(this.name) == true)
+        try 
         {
-             this.name = name;
+            run = false;
+            thread.interrupt();
+            thread.join();
+        } 
+        catch (InterruptedException ex) 
+        {
+            Logger.getLogger(MetaAgent.class.getName())
+                .log(Level.SEVERE, null, ex);
         }
     }
     
-//    public void setPortal(Portal portal)
-//    {
-//        this.portal = portal;
-//    }
+    @Override
+    public void run() 
+    {
+        while(run)
+        {
+            try 
+            {
+                msgHandler(this.take());
+            } 
+            catch (InterruptedException ex) 
+            {
+                Logger.getLogger(MetaAgent.class.getName())
+                   .log(Level.INFO, null, ex);
+            }
+        }
+    }
+    
+    public void msgHandler(Message msg)
+    {
+        System.out.println(this.name + ": " + msg.getContent());
+    }
+    
+    public abstract void sendMessage();
+    
+    public abstract void receiveMessage();
     
     public String getName()
     {
         return this.name;
-    }
-    
-    
-    public boolean isValidName(String name)
-    {
-        return true;
     }
 }

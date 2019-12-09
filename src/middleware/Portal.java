@@ -11,43 +11,25 @@ import java.util.HashMap;
  *
  * @author 44789
  */
-public class Portal extends MetaAgent{
-    
-    HashMap<String, MetaAgent> map = new HashMap(); 
+public class Portal extends MetaAgent
+{
 
-    public Portal(String id) 
+    public Portal(String name, int capacity) 
     {
-        super(id);
+        super(name, capacity);
     }
 
-
-    public void addAgent(String name, MetaAgent agent)
-    {
-        map.put(name, agent);
-    }
-    
-    public void removeAgent(String name)
-    {
-        map.remove(name);
-    }
-    
-    public void messageReceived(Message msg) throws InterruptedException
-    {
-        addAgent(msg.sender.getName(), msg.sender);
-        addAgent(msg.recipient.getName(), msg.recipient);
-        msg.recipient.enqueue(msg);
-        //map.get(msg.recipient.getName()).enqueue(msg);  
-    }
-    
-    public void sendMessage(MetaAgent recipient, Message msg) throws InterruptedException
-    {
-        recipient.messageReceived(msg);
-    }
-    
     @Override
-    public void enqueue(Message msg) throws InterruptedException
-    {   
-        queue.put(msg);
-        messageReceived(msg);
+    public void sendMessage() 
+    {
+        
     }
+
+    @Override
+    public void receiveMessage() 
+    {
+        
+    }
+    
+    
 }

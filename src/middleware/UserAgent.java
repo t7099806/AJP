@@ -11,52 +11,22 @@ package middleware;
  */
 public class UserAgent extends MetaAgent 
 {
-    
-    Portal portal;
-    
-    public UserAgent(String id, Portal p) 
+
+    public UserAgent(String name, int capacity) 
     {
-        super(id);
-        portal = p;      
+        super(name, capacity);
     }
-    
-    public String getSender(Message msg)
-    {
-        return msg.sender.getName();
-    }
-    
-    public String getRecipient(Message msg)
-    {
-        return msg.recipient.getName();
-    }
-    
-    public String getRawMessage(Message msg) throws InterruptedException
-    {
-        msg = queue.take();
-        return msg.wrap();
-    }
-    
-    public int getMessageId(Message msg)
-    {
-        return msg.id;
-    }
-    
+
     @Override
-    public void sendMessage(Message msg, String name) throws InterruptedException
+    public void sendMessage() 
     {
-        portal.enqueue(msg);
+
     }
-    
+
     @Override
-    public void messageReceived(Message msg) throws InterruptedException
+    public void receiveMessage() 
     {
-        System.out.println(msg.wrap());
+
     }
-    
-    @Override
-    public void enqueue(Message msg) throws InterruptedException
-    {
-        queue.put(msg);
-        messageReceived(msg);
-    }
+
 }

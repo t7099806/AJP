@@ -7,38 +7,33 @@ package middleware;
 
 /**
  *
- * @author 44789
+ * @author James Fairbairn
  */
-public class Message {
+public abstract class Message 
+{
+    private String content;
+    private int id;
+    private String sender;
+    private String recipient;
     
-    String rawMessage;
-    int id;
-    MetaAgent sender;
-    MetaAgent recipient;
-    static int idAutoIncrement = 0;
-    
-     Message(String rawMessage, MetaAgent sender, MetaAgent recipient)
+
+    public Message(String Content, int id, String sender, String recipient) 
     {
-        Message.idIncrement();
-        this.rawMessage = rawMessage;
-        this.id = idAutoIncrement;
+        this.content = Content;
+        this.id = id;
         this.sender = sender;
         this.recipient = recipient;
     }
     
-    public String wrap()
+    public String getContent() 
     {
-        return("Message id: " + id + "\n"
-                +"To: " + recipient + "\n"
-                +"From: " + sender + "\n"
-                +"Message: " + rawMessage);
+        return content;
+    }
+
+    public void setContent(String Content) 
+    {
+        this.content = Content;
     }
     
-    private static void idIncrement()
-    {
-        idAutoIncrement++;
-    }
-    
-    
-    
+    public abstract String wrap();
 }

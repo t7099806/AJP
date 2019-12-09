@@ -13,20 +13,8 @@ import java.util.HashMap;
  */
 public class main {
     
-    public static void main(String args[]) throws InterruptedException{
-          
-        Portal portal = new Portal("PortalA");
-        UserAgent agentI = new UserAgent("I", portal);
-        UserAgent agentA = new UserAgent("A", portal);
-        UserAgent agentB = new UserAgent("B", portal);
-        
-        UserMessage msg = new UserMessage("Hello", agentA, agentB);
-        
-        agentA.sendMessage(msg, "B");
-        
-        for (MetaAgent ma : portal.map.values())
-        {
-            System.out.println(ma.name);
-        }
+    public static void main(String args[]) throws InterruptedException
+    {
+
     }
 }

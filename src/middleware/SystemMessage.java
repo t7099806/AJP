@@ -9,10 +9,12 @@ package middleware;
  *
  * @author 44789
  */
-public class SystemMessage extends Message{
+public class SystemMessage extends Message
+{
     
-    public SystemMessage(String rawMessage, int id, MetaAgent sender, MetaAgent recipient) {
-        super(rawMessage, sender, recipient);
+    public SystemMessage(String rawMessage, int id, String sender, String recipient) 
+    {
+        super(rawMessage, id, sender, recipient);
     }
     
     @Override
@@ -20,5 +22,4 @@ public class SystemMessage extends Message{
     {
         return null;
     }
-    
 }
