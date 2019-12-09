@@ -12,9 +12,9 @@ package middleware;
 public abstract class Message 
 {
     private String content;
-    private int id;
-    private String sender;
-    private String recipient;
+    public int id;
+    public String sender;
+    public String recipient;
     
 
     public Message(String Content, int id, String sender, String recipient) 

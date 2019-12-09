@@ -17,11 +17,11 @@ public abstract class MetaAgent extends ArrayBlockingQueue<Message>
         implements Runnable 
 {
 
-    private final String name;
+    public final String name;
     private Thread thread;
     private volatile boolean run;
     Portal portal;
-
+            
     public MetaAgent(String name, int capacity) 
     {
         super(capacity);
@@ -75,9 +75,9 @@ public abstract class MetaAgent extends ArrayBlockingQueue<Message>
         System.out.println(this.name + ": " + msg.getContent());
     }
     
-    public abstract void sendMessage();
+    public abstract void sendMessage(String recipient, Message msg);
     
-    public abstract void receiveMessage();
+    public abstract void receiveMessage(Message msg);
     
     public String getName()
     {
