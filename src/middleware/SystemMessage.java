@@ -11,7 +11,7 @@ package middleware;
  */
 public class SystemMessage extends Message{
     
-    public SystemMessage(String rawMessage, int id, String sender, String recipient) {
+    public SystemMessage(String rawMessage, int id, MetaAgent sender, MetaAgent recipient) {
         super(rawMessage, sender, recipient);
     }
     

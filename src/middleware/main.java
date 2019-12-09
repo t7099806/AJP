@@ -44,7 +44,7 @@ public class main {
         String senderA = "John";
         String recipientA = "jim";
         
-        UserMessage msg = new UserMessage("Hello", "A", "I");
+        UserMessage msg = new UserMessage("Hello", agentA, agentI);
         
         agentA.sendMessage(msg, "I");
         

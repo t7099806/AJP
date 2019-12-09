@@ -31,13 +31,14 @@ public class Portal extends MetaAgent{
         map.remove(name);
     }
     
-    public void messageReceived(Message msg)
+    public void messageReceived(Message msg) throws InterruptedException
     {
-        
+        MetaAgent s = msg.recipient;
+        sendMessage(s, msg);
     }
     
-    public void sendMessage(Message msg)
+    public void sendMessage(MetaAgent recipient, Message msg) throws InterruptedException
     {
-        String a = msg.recipient;
+        recipient.messageRecieved(msg);
     }
 }

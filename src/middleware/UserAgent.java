@@ -22,12 +22,12 @@ public class UserAgent extends MetaAgent
     
     public String getSender(Message msg)
     {
-        return msg.sender;
+        return msg.sender.getName();
     }
     
     public String getRecipient(Message msg)
     {
-        return msg.recipient;
+        return msg.recipient.getName();
     }
     
     public String getRawMessage(Message msg) throws InterruptedException
@@ -45,6 +45,11 @@ public class UserAgent extends MetaAgent
     public void sendMessage(Message msg, String name) throws InterruptedException
     {
         portal.messageReceived(msg);
+    }
+    
+    public void messageRecieved(Message msg) throws InterruptedException
+    {
+        System.out.println("is this working????");
     }
     
 }

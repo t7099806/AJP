@@ -13,11 +13,11 @@ public class Message {
     
     String rawMessage;
     int id;
-    String sender;
-    String recipient;
+    MetaAgent sender;
+    MetaAgent recipient;
     static int idAutoIncrement = 0;
     
-     Message(String rawMessage, String sender, String recipient)
+     Message(String rawMessage, MetaAgent sender, MetaAgent recipient)
     {
         Message.idIncrement();
         this.rawMessage = rawMessage;

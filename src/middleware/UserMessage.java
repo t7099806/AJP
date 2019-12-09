@@ -11,7 +11,7 @@ package middleware;
  */
 public class UserMessage extends Message{
     
-    public UserMessage(String rawMessage, String sender, String recipient) {
+    public UserMessage(String rawMessage, MetaAgent sender, MetaAgent recipient) {
         super(rawMessage, sender, recipient);
     }
     
@@ -19,8 +19,8 @@ public class UserMessage extends Message{
     public String wrap()
     {
         return("Message id: " + id + "\n"
-                +"To: " + recipient + "\n"
-                +"From: " + sender + "\n"
+                +"To: " + recipient.getName() + "\n"
+                +"From: " + sender.getName() + "\n"
                 +"Message: " + rawMessage);
     }
     
