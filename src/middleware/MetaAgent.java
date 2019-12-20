@@ -5,7 +5,7 @@
  */
 package middleware;
 
-import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -13,19 +13,17 @@ import java.util.logging.Logger;
  *
  * @author James Fairbairn
  */
-public abstract class MetaAgent extends ArrayBlockingQueue<Message> 
+public abstract class MetaAgent extends LinkedBlockingQueue<Message> 
         implements Runnable 
 {
 
     public final String name;
-    private Thread thread;
-    private volatile boolean run;
+    protected Thread thread;
+    protected volatile boolean run;
     Portal portal;
             
-    public MetaAgent(String name, int capacity) 
-    {
-        super(capacity);
-        
+    public MetaAgent(String name) 
+    {   
         this.name = name;
         this.run = true;
         
@@ -38,7 +36,7 @@ public abstract class MetaAgent extends ArrayBlockingQueue<Message>
         thread.start();
     }
     
-    public final void stop()
+    public void stop()
     {
         try 
         {
@@ -72,7 +70,7 @@ public abstract class MetaAgent extends ArrayBlockingQueue<Message>
     
     public void msgHandler(Message msg)
     {
-        System.out.println(this.name + ": " + msg.getContent());
+        System.out.println("To " + this.name + ": " + msg.getContent() + "\nFrom: " + msg.sender);
     }
     
     public abstract void sendMessage(String recipient, Message msg);

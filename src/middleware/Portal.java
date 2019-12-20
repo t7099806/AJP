@@ -16,22 +16,21 @@ public class Portal extends MetaAgent
 {
     TreeMap<String, MetaAgent> map = new TreeMap<>();
     
-    public Portal(String name, int capacity) 
+    public Portal(String name) 
     {
-        super(name, capacity);
+        super(name);
     }
 
     @Override
     public void sendMessage(String recipient, Message msg) 
     {
-        // this next
+        
     }
 
     @Override
     public void receiveMessage(Message msg) 
     {
-        System.out.println("Message " + msg.id + " received by portal");
-        sendMessage(msg.recipient, msg);
+        System.out.println("Portal " + this.name + " received message " + msg.id);
     }
     
     public void addAgent(String s, MetaAgent ma)

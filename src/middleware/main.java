@@ -15,6 +15,17 @@ public class main {
     
     public static void main(String args[]) throws InterruptedException
     {
+        Portal p = new Portal("p1");
+        UserAgent a = new UserAgent("a1");
+        UserAgent b = new UserAgent("a2");
+        
+        a.setPortal(p);
+        b.setPortal(p);
+        
+        UserMessage m = new UserMessage("hello1", 1, "a1", "a2");
+
+       
+        a.sendMessage("a2", m);
 
     }
 }
