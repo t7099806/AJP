@@ -67,15 +67,12 @@ public class UserAgent extends MetaAgent
     {
         try 
         {
-            portal.receiveMessage(msg);
-            portal.map.get(recipient).put(msg);
-            
+            portal.put(msg);
         } 
         catch (InterruptedException ex) 
         {
             Logger.getLogger(UserAgent.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }
 
     @Override
@@ -84,11 +81,7 @@ public class UserAgent extends MetaAgent
         // this 2nd
     }
     
-    public void setPortal(Portal p)
-    {
-        portal = p;
-        portal.map.put(name, this);
-    }
+    
     
     public String getSender(Message msg)
     {

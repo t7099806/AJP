@@ -29,7 +29,11 @@ public class Router extends MetaAgent
     @Override
     public void receiveMessage(Message msg) 
     {
+        System.out.println("Router " + this.name + " received message " + msg.id
+         + " from " + msg.sender + ". Sending message to " + msg.recipient);
+        
 
+        
     }
     
 }
