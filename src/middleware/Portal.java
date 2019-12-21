@@ -5,7 +5,9 @@
  */
 package middleware;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -41,21 +43,32 @@ public class Portal extends MetaAgent
         }
         else
         {
-            try 
+//            try 
             {
-                this.portal.map.get(msg.recipient).put(msg);
+                try {
+                    router.put(msg);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Portal.class.getName()).log(Level.SEVERE, null, ex);
+                }
             } 
-            catch (InterruptedException ex) 
-            {
-                Logger.getLogger(Portal.class.getName()).log(Level.SEVERE, null, ex);
-            }
+//            catch (InterruptedException ex) 
+//            {
+//                Logger.getLogger(Portal.class.getName()).log(Level.SEVERE, null, ex);
+//            }
         }
     }
     
     @Override
     public void sendMessage(String recipient, Message msg) 
     {
-
+        try 
+        {
+            router.put(msg);
+        } 
+        catch (InterruptedException ex) 
+        {
+            Logger.getLogger(Portal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
@@ -68,6 +81,7 @@ public class Portal extends MetaAgent
     public void addAgent(String s, MetaAgent ma)
     {
         map.put(s, ma);
+        router.map.put(s, this);
     }
     
     public void removeAgent(String s)
@@ -75,7 +89,7 @@ public class Portal extends MetaAgent
         map.remove(s);
     }
     
-    public void addRouter(Router r)
+    public void setRouter(Router r)
     {
         router = r;
     }

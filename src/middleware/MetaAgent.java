@@ -30,7 +30,7 @@ public abstract class MetaAgent extends LinkedBlockingQueue<Message>
         start();
     }
     
-    private void start()
+    protected void start()
     {
         thread = new Thread(this);
         thread.start();
@@ -85,5 +85,6 @@ public abstract class MetaAgent extends LinkedBlockingQueue<Message>
     {
         portal = p;
         portal.map.put(name, this);
+        portal.router.map.put(name, portal);
     }
 }

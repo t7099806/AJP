@@ -22,45 +22,6 @@ public class UserAgent extends MetaAgent
         this.run = true;
         start();
     }
-
-    private void start()
-    {
-        thread = new Thread(this);
-        thread.start();
-    }
-    
-    @Override
-    public void stop()
-    {
-        try 
-        {
-            run = false;
-            thread.interrupt();
-            thread.join();
-        } 
-        catch (InterruptedException ex) 
-        {
-            Logger.getLogger(MetaAgent.class.getName())
-                .log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    @Override
-    public void run() 
-    {
-        while(run)
-        {
-            try 
-            {
-                msgHandler(this.take());
-            } 
-            catch (InterruptedException ex) 
-            {
-                Logger.getLogger(MetaAgent.class.getName())
-                   .log(Level.INFO, null, ex);
-            }
-        }
-    }
     
     @Override
     public void sendMessage(String recipient, Message msg) 

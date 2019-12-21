@@ -17,19 +17,26 @@ public class main {
     {
         Portal p1 = new Portal("p1");
         Portal p2 = new Portal("p2");
+        Portal p3 = new Portal("p3");
         UserAgent a1 = new UserAgent("a1");
         UserAgent a2 = new UserAgent("a2");
+        UserAgent a3 = new UserAgent("a3");
+        Router r = new Router("r");
+        
+        p1.setRouter(r);
+        p2.setRouter(r);
+        p3.setRouter(r);
         
         a1.setPortal(p1);
         a2.setPortal(p2);
+        a3.setPortal(p3);
+
         
-        p1.setPortal(p2);
         
-        
-        UserMessage m = new UserMessage("hello1", 1, "a1", "a2");
+        UserMessage m = new UserMessage("hello1", 1, "a1", "a3");
 
        
-        a1.sendMessage("a2", m);
+        a1.sendMessage("a3", m);
 
     }
 }
