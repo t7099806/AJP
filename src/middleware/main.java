@@ -5,7 +5,9 @@
  */
 package middleware;
 
-import java.util.HashMap;
+import static middleware.AgentFactory.agentType.PORTAL;
+import static middleware.AgentFactory.agentType.ROUTER;
+import static middleware.AgentFactory.agentType.USER;
 
 /**
  *
@@ -15,13 +17,13 @@ public class main {
     
     public static void main(String args[]) throws InterruptedException
     {
-        Portal p1 = new Portal("p1");
-        Portal p2 = new Portal("p2");
-        Portal p3 = new Portal("p3");
-        UserAgent a1 = new UserAgent("a1");
-        UserAgent a2 = new UserAgent("a2");
-        UserAgent a3 = new UserAgent("a3");
-        Router r = new Router("r");
+        Portal p1 = (Portal) AgentFactory.createAgent(PORTAL, "p1");
+        Portal p2 = (Portal) AgentFactory.createAgent(PORTAL, "p2");
+        Portal p3 = (Portal) AgentFactory.createAgent(PORTAL, "p3");
+        UserAgent a1 = (UserAgent) AgentFactory.createAgent(USER, "a1");
+        UserAgent a2 = (UserAgent) AgentFactory.createAgent(USER, "a2");
+        UserAgent a3 = (UserAgent) AgentFactory.createAgent(USER, "a3");
+        Router r = (Router) AgentFactory.createAgent(ROUTER, "r");
         
         p1.setRouter(r);
         p2.setRouter(r);
@@ -31,11 +33,8 @@ public class main {
         a2.setPortal(p2);
         a3.setPortal(p3);
 
-        
-        
         UserMessage m = new UserMessage("hello1", 1, "a1", "a3");
 
-       
         a1.sendMessage("a3", m);
 
     }
