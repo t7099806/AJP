@@ -8,6 +8,7 @@ package middleware;
 import static middleware.AgentFactory.agentType.PORTAL;
 import static middleware.AgentFactory.agentType.ROUTER;
 import static middleware.AgentFactory.agentType.USER;
+import static middleware.MessageFactory.messageType.USERMSG;
 
 /**
  *
@@ -33,7 +34,7 @@ public class main {
         a2.setPortal(p2);
         a3.setPortal(p3);
 
-        UserMessage m = new UserMessage("hello1", 1, "a1", "a3");
+        UserMessage m = (UserMessage) MessageFactory.createMessage(USERMSG, "hello1", 1, "a1", "a3");
 
         a1.sendMessage("a3", m);
 
