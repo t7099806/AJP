@@ -36,7 +36,7 @@ public class main {
 
         UserMessage m = (UserMessage) MessageFactory.createMessage(USERMSG, "hello1", 1, "a1", "a3");
 
-        a1.sendMessage("a3", m);
+        a1.sendMessage(m);
 
     }
 }

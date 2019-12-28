@@ -73,7 +73,7 @@ public abstract class MetaAgent extends LinkedBlockingQueue<Message>
         System.out.println("To " + this.name + ": " + msg.getContent() + "\nFrom: " + msg.sender);
     }
     
-    public abstract void sendMessage(String recipient, Message msg);
+    public abstract void sendMessage(Message msg);
     
     public abstract void receiveMessage(Message msg);
     

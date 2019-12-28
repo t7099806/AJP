@@ -59,7 +59,7 @@ public class Portal extends MetaAgent
     }
     
     @Override
-    public void sendMessage(String recipient, Message msg) 
+    public void sendMessage(Message msg) 
     {
         try 
         {
