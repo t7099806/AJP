@@ -43,18 +43,9 @@ public class Portal extends MetaAgent
         }
         else
         {
-//            try 
             {
-                try {
-                    router.put(msg);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(Portal.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                sendMessage(msg);
             } 
-//            catch (InterruptedException ex) 
-//            {
-//                Logger.getLogger(Portal.class.getName()).log(Level.SEVERE, null, ex);
-//            }
         }
     }
     

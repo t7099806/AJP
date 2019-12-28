@@ -81,6 +81,7 @@ public abstract class MetaAgent extends LinkedBlockingQueue<Message>
     {
         return this.name;
     }
+    
     public void setPortal(Portal p)
     {
         portal = p;
